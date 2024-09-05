@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rgraph</title>
+    </head>
+
+    <link rel="stylesheet" type="text/css" href="../public/CSS/style.css">
+
+    <header class="app-header">
+        <h1>Rgraph</h1>
+    </header>
+
+    <body>
+        <div class="information-container">
+            <h1 class="information-container-title">Qu'est-ce que r/place ?</h1>
+            <p class="information-container-explaination">r/place était un projet collaboratif récurrent et une expérience sociale hébergée sur le site d'agrégation de contenu Reddit
+                qui a eu lieu en avril 2017. Les utilisateurs de Reddit pouvaient modifier les pixels d'une toile virtuelle en temps réel
+                en choisissant une couleur pour chaque pixel parmi une palette de 16 couleurs. 
+                Chaque utilisateur pouvait placer un pixel toutes les cinq minutes. 
+                L'objectif était de créer des images et des motifs sur la toile en collaboration avec d'autres utilisateurs.
+            </p>
+            <a class="information-container-btn" href="https://www.reddit.com/r/place/" target="_blank">En savoir plus</a>
+        </div>
+
+        <div class="centered-text-div">
+            <img class="information-container-img" src="../public/Images/rplace.png" alt="rplace">
+        </div>
+
+
+        <div class="graph-container">
+            <h1>Graphiques concernant r/place</h1>
+
+            <div id="my_dataviz"></div>
+            <div id="my_dataviz2"></div>
+
+        </div>
+    </body>
+
+    <footer class="footer-container">
+
+        <div class="footer-credits-container">
+            <div class="footer-credits-noms">
+                <p>Etienne Chevrolier</p>
+                <p>Clément Cuvier</p>
+                <p>Frédéric Hilleriteau</p>
+                <p>Jean-Baptiste Lelandais</p>
+                <p>Lino Moreau</p>
+            </div>
+        </div>
+
+        <div class="footer-stack-container">
+            <div class="footer-stack-logos">
+                <img class="footer-stack-logo-1x1" src="../public/Images/D3.png" alt="D3.js">
+                <img class="footer-stack-logo-rect-XL" src="../public/Images/Hadoop.png" alt="Apache Hadoop">
+                <img class="footer-stack-logo-rect" src="../public/Images/apache_spark.webp" alt="Apache Spark">     
+            </div>
+        </div>
+    </footer>
+
+    <script src="../public/JS/graphbar.js"></script>
+    <script src="../public/JS/heatmap.js"></script>
+    <script src="https://d3js.org/d3.v4.js"></script>
+</html>
