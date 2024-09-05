@@ -9,7 +9,7 @@ findspark.init()
 # Script which counts the number of modifications by hour
 # Result is formatted as `hour,count`
 
-sc = SparkContext("local", "modification-count-by-hour")
+sc = SparkContext("local[*]", "modification-count-by-hour")
 
 if len(sys.argv) != 3:
     print("Usage: modification-count-by-hour <input-file> <output-file>")
@@ -43,4 +43,4 @@ hour_counts = lines.map(lambda line: extract_hour(line))
 result = hour_counts.reduceByKey(lambda a, b: a + b)
 sorted_result = result.sortBy(lambda x: x[0])
 formatted_result = sorted_result.map(lambda x: str(x[0]) + "," + str(x[1]))
-formatted_result.saveAsTextFile(output_file)
+formatted_result.coalesce(1).saveAsTextFile(output_file)
