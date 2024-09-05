@@ -1,4 +1,6 @@
 .vscode
 
-data/input
+data/input/*
+!data/input/10k.csv
+
 data/output
