@@ -21,6 +21,10 @@ shutil.rmtree(output_file, ignore_errors=True)
 
 lines = sc.textFile(input_file)
 
+# Remove the first line (headers)
+header = lines.first()
+lines = lines.filter(lambda line: line != header)
+
 # Extracts the color from a line
 def extract_colors(line):
     csv_attr = line.replace('"', "").split(",")
