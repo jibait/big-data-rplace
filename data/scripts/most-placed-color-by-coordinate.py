@@ -47,4 +47,4 @@ color_count_by_coordinates = coordinates_and_color_count.map(lambda x: color_cou
 most_placed_color_by_coordinates = color_count_by_coordinates.reduceByKey(lambda a, b: a if a[1] > b[1] else b)
 
 formated_result = most_placed_color_by_coordinates.map(lambda x: x[0] + "," + str(x[1][0]))
-formated_result.saveAsTextFile(output_file)
+formated_result.coalesce(1).saveAsTextFile(output_file)

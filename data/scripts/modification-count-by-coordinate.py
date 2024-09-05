@@ -41,4 +41,4 @@ result = coordinates.reduceByKey(lambda a, b: a + b)
 sorted_result = result.sortBy(lambda x: x[1], ascending=False)
 
 formated_result = sorted_result.map(lambda x: x[0] + "," + str(x[1]))
-formated_result.saveAsTextFile(output_file)
+formated_result.coalesce(1).saveAsTextFile(output_file)
