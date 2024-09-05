@@ -1,4 +1,4 @@
 .vscode
 
-hadoop-spark/input
-hadoop-spark/output
+data/input
+data/output
