@@ -7,7 +7,7 @@ findspark.init()
 # Script which counts the number of modifications by user
 # Result is formatted as `user,count`
 
-sc = SparkContext("local", "modification-count-by-user")
+sc = SparkContext("local[*]", "modification-count-by-user")
 
 if len(sys.argv) != 3:
     print("Usage: modification-count-by-user <input-file> <output-file>")
