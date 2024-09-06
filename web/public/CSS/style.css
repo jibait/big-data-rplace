@@ -143,6 +143,11 @@ body {
 
 /* Header styles */
 .app-header {
+    position: -webkit-sticky;
+    position: sticky;
+    z-index: 1000;
+    /* Assure que la navbar soit au-dessus des autres éléments */
+    top: 0;
     background: white;
     color: white;
     height: 80px;
@@ -177,6 +182,7 @@ body {
     text-decoration: none;
     transition: all 0.3s ease;
     border: 2px solid transparent;
+
     /* Par défaut, bordure transparente */
 }
 
@@ -216,7 +222,6 @@ body {
     text-align: center;
     padding: 0 20px;
     box-sizing: border-box;
-    position: relative;
 }
 
 .landing-page-content {
@@ -411,7 +416,8 @@ body {
     margin: 0 auto;
 }
 
-.engagement-container-title {
+.engagement-container-title,
+.information-container-title {
     color: white;
     font-size: 32px;
     font-size: 'Open Sans', sans-serif;
