@@ -1,75 +1,91 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
-    <title>Rgraph</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rgraph - Projet r/place</title>
     <link rel="stylesheet" type="text/css" href="./CSS/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Raleway:wght@100;300;600&display=swap"
         rel="stylesheet">
 </head>
-<header class="app-header">
-    <img src="./img/logo.png" alt="Logo" class="app-header-logo">
-    <nav class="app-header-nav">
-        <a href="#r-place" class="active">Qu'est-ce que r/place ?</a>
-        <a href="#r-graph">Le projet r/graph</a>
-        <a href="#graphes">Les graphes</a>
-    </nav>
-
-</header>
 
 <body>
-    <div class="information">
+    <!-- Header -->
+    <header class="app-header">
+        <div class="app-header-left">
+            <img src="./img/logo.png" alt="Logo" class="app-header-logo">
+        </div>
+        <nav class="app-header-nav">
+            <a href="#r-place" class="active">Qu'est-ce que r/place ?</a>
+            <a href="#r-graph">Le projet r/graph</a>
+            <a href="#graphes">Les graphes</a>
+        </nav>
+    </header>
+
+    <!-- Section: Landing Page -->
+    <section class="landing-page">
+        <div class="landing-page-content">
+            <h1>Bienvenue sur Rgraph</h1>
+            <p>Découvrez comment la communauté Reddit a créé des œuvres d'art collaboratives uniques à travers des
+                pixels et explorez nos graphiques interactifs basés sur le projet r/place.</p>
+            <a href="#r-place" class="landing-page-btn">En savoir plus</a>
+        </div>
+    </section>
+
+    <!-- Section: Introduction r/place -->
+    <section class="information">
         <div class="information-container">
             <h1 class="information-container-title" id="r-place">Qu'est-ce que r/place ?</h1>
-            <p class="information-container-explaination">
+            <p class="information-container-explanation">
                 r/place était un projet collaboratif récurrent et une expérience sociale hébergée sur le site
-                d'agrégation
-                de contenu Reddit qui a eu lieu en avril 2017. Les utilisateurs de Reddit pouvaient modifier les pixels
-                d'une toile virtuelle en temps réel en choisissant une couleur pour chaque pixel parmi une palette de 16
-                couleurs. Chaque utilisateur pouvait placer un pixel toutes les cinq minutes. L'objectif était de créer
-                des
-                images et des motifs sur la toile en collaboration avec d'autres utilisateurs.
+                d'agrégation de contenu Reddit, en avril 2017. Les utilisateurs de Reddit pouvaient modifier les pixels
+                d'une toile virtuelle en temps réel en choisissant une couleur parmi une palette de 16 couleurs. Chaque
+                utilisateur pouvait placer un pixel toutes les cinq minutes, collaborant ainsi à la création d'images
+                et motifs sur la toile.
             </p>
             <a class="information-container-btn" href="https://www.reddit.com/r/place/" target="_blank">En savoir
                 plus</a>
         </div>
-    </div>
+    </section>
 
+    <!-- Section: Image -->
     <div class="centered-text-div">
         <img class="information-container-img" src="./img/rplace.png" alt="rplace">
     </div>
 
-    <div id="graphes" class="graph-container">
+    <!-- Section: Graphiques -->
+    <section id="graphes" class="graph-container">
         <h1>Graphiques concernant r/place</h1>
         <div id="my_dataviz"></div>
         <div id="my_dataviz2"></div>
-    </div>
-</body>
+    </section>
 
-<footer class="footer-container">
-    <div class="footer-credits-container">
-        <p>Etienne Chevrolier</p>
-        <p>Clément Cuvier</p>
-        <p>Frédéric Hilleriteau</p>
-        <p>Jean-Baptiste Lelandais</p>
-        <p>Lino Moreau</p>
-    </div>
-    <div class="footer-stack-container">
-        <div class="footer-stack-logos">
-            <img class="footer-stack-logo-1x1" src="./img/D3.png" alt="D3.js">
-            <img class="footer-stack-logo-rect-XL" src="./img/Hadoop.png" alt="Apache Hadoop">
-            <img class="footer-stack-logo-rect" src="./img/apache_spark.webp" alt="Apache Spark">
+    <!-- Footer -->
+    <footer class="footer-container">
+        <div class="footer-credits-container">
+            <p>Etienne Chevrolier</p>
+            <p>Clément Cuvier</p>
+            <p>Frédéric Hilleriteau</p>
+            <p>Jean-Baptiste Lelandais</p>
+            <p>Lino Moreau</p>
         </div>
-    </div>
-</footer>
+        <div class="footer-stack-container">
+            <div class="footer-stack-logos">
+                <img class="footer-stack-logo-1x1" src="./img/D3.png" alt="D3.js">
+                <img class="footer-stack-logo-rect-XL" src="./img/Hadoop.png" alt="Apache Hadoop">
+                <img class="footer-stack-logo-rect" src="./img/apache_spark.webp" alt="Apache Spark">
+            </div>
+        </div>
+    </footer>
 
-
-<!--    <script src="../../../public/JS/graphbar.js"></script>-->
-<script src="./js/graphbar.js"></script>
-<script src="./js/heatmap.js"></script>
-<script src="https://d3js.org/d3.v4.js"></script>
+    <!-- JS Scripts -->
+    <script src="./js/graphbar.js"></script>
+    <script src="./js/heatmap.js"></script>
+    <script src="https://d3js.org/d3.v4.js"></script>
+</body>
 
 </html>
