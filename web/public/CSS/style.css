@@ -156,6 +156,17 @@ body {
     text-align: center;
 }
 
+.information-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Fond légèrement sombre pour améliorer la lisibilité */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
 /* Conteneur de l'image */
 .image-container {
     width: 100%;
@@ -171,17 +182,18 @@ body {
 .image-container img {
     position: absolute;
     /* Permet de déplacer l'image à l'intérieur du conteneur */
-    width: 150%;
-    /* Plus grande que le conteneur pour permettre le défilement */
-    height: 150%;
-    /* Plus grande que le conteneur pour permettre le défilement */
+    width: 200%;
+    /* Augmente la largeur pour utiliser entièrement l'espace de l'image */
+    height: 1000%;
+    /* Augmente la hauteur pour utiliser entièrement l'espace de l'image */
     object-fit: cover;
     /* Assure que l'image garde ses proportions tout en remplissant le conteneur */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    /* Centre l'image dans le conteneur */
+    top: 0;
+    /* Commence le positionnement à partir du haut */
+    left: 0;
+    /* Commence le positionnement à partir de la gauche */
 }
+
 
 
 .information-container-explanation {
