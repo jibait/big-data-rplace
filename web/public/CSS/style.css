@@ -148,7 +148,6 @@ body {
     }
 }
 
-
 /* Information Section */
 .information {
     background: rgb(63, 94, 251);
@@ -157,21 +156,33 @@ body {
     text-align: center;
 }
 
-.information-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.6);
-    /* Fond légèrement sombre pour améliorer la lisibilité */
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+/* Conteneur de l'image */
+.image-container {
+    width: 100%;
+    height: 7em;
+    /* Hauteur fixe du conteneur */
+    overflow: hidden;
+    /* Cache les parties de l'image qui dépassent */
+    position: relative;
+    /* Pour contenir l'image positionnée absolument */
 }
 
-.information-container-title {
-    font-size: 32px;
-    margin-bottom: 20px;
+/* Image animée */
+.image-container img {
+    position: absolute;
+    /* Permet de déplacer l'image à l'intérieur du conteneur */
+    width: 150%;
+    /* Plus grande que le conteneur pour permettre le défilement */
+    height: 150%;
+    /* Plus grande que le conteneur pour permettre le défilement */
+    object-fit: cover;
+    /* Assure que l'image garde ses proportions tout en remplissant le conteneur */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Centre l'image dans le conteneur */
 }
+
 
 .information-container-explanation {
     font-size: 18px;
@@ -204,22 +215,27 @@ body {
     background-color: #790975;
 }
 
-/* Image Section */
-.centered-text-div {
-    display: flex;
-    justify-content: center;
-    margin: 40px 0;
-}
-
-.information-container-img {
+/* Conteneur de l'image */
+/* Conteneur de l'image */
+.image-container {
     width: 100%;
     height: 20em;
-    /* Ajuste la hauteur comme tu le souhaites */
-    object-fit: cover;
-    /* Assure que l'image garde ses proportions tout en remplissant le conteneur */
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+    background: url('./img/rplace.png') no-repeat center center;
+    background-size: cover;
+    /* L'image couvre tout le conteneur */
 }
+
+/* Image animée */
+.information-container-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
 
 /* Graph Section */
 .graph-container {

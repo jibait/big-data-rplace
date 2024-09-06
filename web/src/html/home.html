@@ -61,8 +61,8 @@
     </section>
 
     <!-- Section: Image -->
-    <div class="centered-text-div">
-        <img class="information-container-img" src="./img/rplace.png" alt="rplace">
+    <div class="image-container">
+        <img src="./img/rplace.png" alt="rplace" class="animated-image">
     </div>
 
     <!-- Section: Graphiques -->
@@ -93,6 +93,22 @@
     <!-- JS Scripts -->
     <script src="./js/graphbar.js"></script>
     <script src="./js/heatmap.js"></script>
+    <script src="./js/anime.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+    <script>
+        // Animation GSAP
+        gsap.to(".image-container img", {
+            duration: 15, // Durée de l'animation
+            x: "-20%", // Déplacement horizontal (ajustez en fonction de la taille de l'image)
+            y: "-20%", // Déplacement vertical (ajustez en fonction de la taille de l'image)
+            repeat: -1, // Répéter indéfiniment
+            yoyo: true, // Inverser la direction à chaque répétition
+            ease: "linear" // Mouvement linéaire
+        });
+
+
+    </script>
     <script src="https://d3js.org/d3.v4.js"></script>
 </body>
 
