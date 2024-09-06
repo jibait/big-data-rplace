@@ -21,5 +21,5 @@ for f in /root/scripts/*; do
   # Execute the file
   echo "Executing $f"
 #   spark-submit $f data/input/10k.csv data/output/$(basename $f | cut -d. -f1)
-  python3 $f data/input/400k.csv data/output/$(basename $f | cut -d. -f1)
+  python3 $f data/input/10k.csv data/output/$(basename $f | cut -d. -f1)
 done
