@@ -4,3 +4,5 @@ data/input/*
 !data/input/10k.csv
 
 data/output
+
+*/node_modules

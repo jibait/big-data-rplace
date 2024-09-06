@@ -1,159 +1,190 @@
-.app-header{
-    background: linear-gradient(90deg, rgba(227,25,197,1) 0%, rgba(121,9,117,1) 40%, rgba(253,241,250,1) 100%); 
-    color: white;
-    height: 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    box-shadow: 0 0 20px 0 rgba(0,0,0,0.5);
-}
-
-body{
+/* Global styles */
+body {
+    font-family: 'Raleway', sans-serif;
     margin: 0;
-    display: grid;
-    gap: 20px;
-    background-color: #edeff0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #222222;
 }
 
-.centered-text-div{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.footer-container{
-    background-color: #494949;
+/* Header styles */
+.app-header {
+    background: white;
     color: white;
+    height: 80px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5);
+}
+
+.app-header-logo {
+    width: 7em;
     height: auto;
-    padding: 10px;
+    margin-right: 10px;
 }
 
-.footer-credits-container,
-.footer-stack-container{
-    display: flex;
+.app-header-title {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 24px;
 }
 
-.footer-credits-noms{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+/* Style des boutons de navigation */
+.app-header-nav a {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-left: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 10px;
+    /* Boutons arrondis */
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    /* Par défaut, bordure transparente */
 }
 
-.footer-credits-noms{
-    border-right: 2px solid white;
-    padding-right: 5px;
+/* Lien inactif */
+.app-header-nav a:not(.active) {
+    background-color: transparent;
+    color: #222222;
+    border-color: #222222;
+    /* Bordure noire pour les liens inactifs */
 }
 
-.footer-stack-logos{
-    display: flex;
-    border-left: 2px solid white;
-    align-items: center;
+/* Lien actif */
+.app-header-nav a.active {
+    background-color: #222222;
+    color: white;
+    border-color: #222222;
+    /* Bordure noire pleine pour les liens actifs */
 }
 
-.footer-stack-logo-rect{
-    width: 125px;
-    height: 100px;
+/* Hover state */
+.app-header-nav a:hover {
+    background-color: #444444;
+    color: white;
+    border-color: #444444;
 }
 
-.footer-stack-logo-rect-XL{
-    width: 250px;
-    height: 100px;
+/* Main container styles */
+.information {
+    background: rgb(63, 94, 251);
+    background: linear-gradient(90deg, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
 }
 
-.footer-stack-logo-1x1{
-    width: 100px;
-    height:100px;
+.information-container {
+    padding: 40px;
+    background-color: #fff;
+    max-width: 800px;
+    margin: 40px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
-.graph-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
-    gap: 30px;
+.information-container-title {
+    font-size: 28px;
+    margin-bottom: 20px;
 }
 
-.information-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    width: 50%;
-    background-color: #FFFFFF;
-    margin-left: auto;
-    margin-right: auto;
-    box-shadow: 0 0 20px 0 rgba(0,0,0,0.2);
+.information-container-explaination {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 20px;
 }
 
 .information-container-btn {
-    position: relative;
     padding: 10px 20px;
-    font-size: 16px;
+    background-color: #ff4500;
     color: white;
-    background-color: #333;
-    border: none;
-    cursor: pointer;
-    overflow: hidden;
-    z-index: 1;
-    text-decoration: none;
     border-radius: 5px;
-    margin: 10px;
-}
-
-.information-container-btn::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 300%;
-    height: 300%;
-    background: rgba(255, 255, 255, 0.2);
-    transform: translate(-50%, -50%) scale(0);
-    border-radius: 50%;
-    z-index: -1;
-    transition: transform 0.6s ease-out;
-}
-
-.information-container-btn:hover::before {
-    transform: translate(-50%, -50%) scale(1);
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
 }
 
 .information-container-btn:hover {
-    transform: scale(1.1);
-    transition: transform 0.5s ease;
+    background-color: #790975;
 }
 
-.information-container-explaination{
-    padding: 10px;
-    text-align: justify;
-    text-justify: center;
+.centered-text-div {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
 }
 
-.information-container-img{
-    width: 700px;
-    height: auto;
+.information-container-img {
+    width: 100%;
+    height: 20em;
+    /* Ajuste la hauteur comme tu le souhaites */
+    object-fit: cover;
+    /* Assure que l'image garde ses proportions tout en remplissant le conteneur */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.information-container-title{
-    font-weight: bold;
-    padding: 10px;
-    text-decoration : underline;
+
+/* Graph container */
+.graph-container {
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
 }
 
-#my_dataviz:hover, #my_dataviz2:hover{
-    transform: scale(1.1);
-    transition: transform 0.5s ease;
-    box-shadow: 0 0 20px 0 rgba(0,0,0,0.2);
+.graph-container h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
 }
 
-p{
-    margin: 3px;
+/* Footer styles */
+.footer-container {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-credits-container p {
+    margin: 5px 0;
+}
+
+.footer-stack-logos {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.footer-stack-logo-1x1,
+.footer-stack-logo-rect,
+.footer-stack-logo-rect-XL {
+    max-width: 50px;
+    max-height: 50px;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+}
+
+.footer-stack-logo-1x1:hover,
+.footer-stack-logo-rect:hover,
+.footer-stack-logo-rect-XL:hover {
+    filter: grayscale(0);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .app-header-title {
+        font-size: 18px;
+    }
+
+    .information-container {
+        padding: 20px;
+    }
+
+    .footer-stack-logos {
+        flex-direction: column;
+    }
 }
