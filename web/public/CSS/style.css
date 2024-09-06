@@ -74,7 +74,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: calc(100vh - 80px);
     /* Prend toute la hauteur de la vue */
     background: rgb(63, 94, 251);
     background: linear-gradient(90deg, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
@@ -82,6 +82,7 @@ body {
     text-align: center;
     padding: 0 20px;
     box-sizing: border-box;
+    position: relative;
 }
 
 .landing-page-content {
@@ -113,6 +114,41 @@ body {
     background-color: #790975;
 }
 
+/* Scroll Down Arrow */
+.scroll-down {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.scroll-down i {
+    font-size: 24px;
+    color: white;
+    animation: bounce 1s infinite;
+}
+
+/* Animation */
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-10px);
+    }
+
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+
 /* Information Section */
 .information {
     background: rgb(63, 94, 251);
@@ -143,7 +179,10 @@ body {
     margin-bottom: 20px;
 }
 
+/* Bouton avec icône */
 .information-container-btn {
+    display: inline-flex;
+    align-items: center;
     padding: 10px 20px;
     background-color: #ff4500;
     color: white;
@@ -151,8 +190,16 @@ body {
     text-decoration: none;
     font-weight: bold;
     transition: background-color 0.3s ease;
+    font-size: 16px;
 }
 
+.information-container-btn i {
+    margin-right: 8px;
+    /* Espace entre l'icône et le texte */
+    font-size: 18px;
+}
+
+/* Hover state */
 .information-container-btn:hover {
     background-color: #790975;
 }
