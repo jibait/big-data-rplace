@@ -8,6 +8,7 @@ findspark.init()
 # Result is formatted as `x,y,count`
 
 sc = SparkContext("local[*]", "modification-count-by-coordinate")
+sc.setLogLevel("ERROR")
 
 if len(sys.argv) != 3:
     print("Usage: modification-count-by-coordinate <input-file> <output-file>")

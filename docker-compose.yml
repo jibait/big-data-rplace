@@ -24,6 +24,8 @@ services:
       - ./data/scripts:/root/scripts
       - ./data/input/:/root/input
       - ./data/start-processing.sh:/root/start-processing.sh
+    environment:
+      - INPUT_FILE_NAME=${INPUT_FILE_NAME:-10k.csv}
 
   hadoop-worker1:
     image: madjidtaoualit/hadoop-cluster:latest

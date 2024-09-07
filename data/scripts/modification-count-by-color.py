@@ -8,6 +8,7 @@ findspark.init()
 # Result is formatted as `color,count`
 
 sc = SparkContext("local[*]", "modification-count-by-color")
+sc.setLogLevel("ERROR")
 
 if len(sys.argv) != 3:
     print("Usage: modification-count-by-color <input-file> <output-file>")

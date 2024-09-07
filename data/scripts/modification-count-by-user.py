@@ -8,6 +8,7 @@ findspark.init()
 # Result is formatted as `user,count`
 
 sc = SparkContext("local[*]", "modification-count-by-user")
+sc.setLogLevel("ERROR")
 
 if len(sys.argv) != 3:
     print("Usage: modification-count-by-user <input-file> <output-file>")
