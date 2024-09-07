@@ -5,13 +5,14 @@ document.addEventListener('DOMContentLoaded', function() {
 /**
  * Fonction permettant de charger le graphique en barres
  */
+
 function loadgraphBar(){
     // Définition des marges et dimensions du graphique
     var margin = {top: 30, right: 50, bottom: 70, left: 80},
         width = 750 - margin.left - margin.right,
         height = 650 - margin.top - margin.bottom;
 
-    // Attacher le svg a la div #my_dataviz2
+    // Attacher le svg à la div #my_dataviz2
     var svg = d3.select("#my_dataviz2")
     .append("svg")
         .attr("width", width + margin.left + margin.right)
@@ -53,24 +54,51 @@ function loadgraphBar(){
         // Ajout de l'axe y
         var yAxis = d3.axisLeft(y)
             .ticks(10, ",")  // Nombre de ticks sur l'axe y
-            .tickFormat(d3.format(",.0f")); // Format des ticks en valeures entières (éviter d'avoir 1+e3 par exemple)
+            .tickFormat(d3.format(",.0f")); // Format des ticks en valeurs entières (éviter d'avoir 1+e3 par exemple)
 
         svg.append("g")
             .call(yAxis);
 
-        // Barres
-        svg.selectAll("mybar")
-        .data(data)
-        .enter()
-        .append("rect")
+        // Ajouter un groupe pour chaque barre
+        var bars = svg.selectAll(".bar")
+            .data(data)
+            .enter()
+            .append("g")
+            .attr("class", "bar");
+
+        // Ajouter les barres
+        bars.append("rect")
             .attr("x", function(d) { return x(colorHexMap.get(d.Country)); })
             .attr("y", function(d) { return y(d.Value); })
             .attr("width", x.bandwidth())
             .attr("height", function(d) { return height - y(d.Value); })
             .attr("fill", function(d) { 
-                return d.Country;  // Couleur de la barre
+                return d.Country;
             });
 
+        // Ajouter le texte pour afficher la valeur
+        bars.append("text")
+            .attr("class", "bar-label")
+            .attr("x", function(d) { return x(colorHexMap.get(d.Country)) + x.bandwidth() / 2; })
+            .attr("y", function(d) { return y(d.Value) - 5; })
+            .attr("text-anchor", "middle")
+            .style("opacity", 0)  // Masquer le texte par défaut
+            .text(function(d) { return d.Value; });
+
+        // Gestion des événements de survol
+        bars.on("mouseover", function() {
+            d3.select(this).select("rect")
+              .attr("stroke", "black")       // Ajoute la bordure noire, stroke car c'est un SVG
+              .attr("stroke-width", 1);      // Définit l'épaisseur de la bordure
+            d3.select(this).select("text")
+              .style("opacity", 1);          // Affiche la valeur au survol
+        })
+        .on("mouseout", function() {
+            d3.select(this).select("rect")
+              .attr("stroke", "none");      // Retire la bordure
+            d3.select(this).select("text")
+              .style("opacity", 0);         // Masque la valeur après le survol
+        });
     });
 }
 
