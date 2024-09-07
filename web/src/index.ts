@@ -1,45 +1,59 @@
 import express, { Request, Response } from 'express';
 import path from "node:path";
-import * as webhdfs from "webhdfs";
+import fs from 'fs';
+import axios from "axios";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Configuration de WebHDFS
-const hdfs = webhdfs.createClient({
-    user: "hadoop",  // Utilisateur HDFS
-    host: "hadoop-master", // Nom de l'hôte du conteneur Hadoop
-    port: 9870, // Port pour WebHDFS (par défaut 9870)
-    path: "/webhdfs/v1" // Chemin de base pour WebHDFS
-});
+const HDFS_HOST = "http://hadoop-master:9870/webhdfs/v1";
+const DATASET_DIR = path.join(__dirname, '../public/datasets/');
 
-// lire un fichier depuis HDFS
-function readFileFromHDFS(filePath: string): Promise<string> {
+async function readFileFromHDFS(filePath: string): Promise<string> {
+    try {
+        const response = await axios.get(`${HDFS_HOST}${filePath}?op=OPEN`, {
+            responseType: 'stream',
+            maxRedirects: 5,
+        });
+
+        let fileContent = '';
+
+        response.data.on('data', (chunk: Buffer) => {
+            fileContent += chunk.toString();
+        });
+
+        return new Promise((resolve, reject) => {
+            response.data.on('end', () => resolve(fileContent));
+            response.data.on('error', (error: Error) => reject(error));
+        });
+
+    } catch (error) {
+        console.error("Erreur lors de la lecture du fichier HDFS:", error);
+        throw error;
+    }
+}
+
+async function saveContentAsCSV(fileName: string, headers: string[], content: string): Promise<void> {
+
+    const filePath = path.join(DATASET_DIR, fileName);
+    fs.mkdirSync(DATASET_DIR, { recursive: true });
+
+    // Créer le contenu CSV avec les en-têtes
+    const csvContent = headers.join(",") + "\n" + content;
+
+    // Écrire le fichier CSV (remplace s'il existe déjà)
     return new Promise((resolve, reject) => {
-        const remoteFileStream = hdfs.createReadStream(filePath);
-
-        let fileContent = "";
-
-        remoteFileStream.on("data", (chunk) => {
-            fileContent += chunk;
-        });
-
-        remoteFileStream.on("error", (err) => {
-            console.error("Erreur lors de la lecture du fichier HDFS :", err);
-            console.error("Détails de l'erreur :", {
-                message: err.message,
-                stack: err.stack,
-                code: err.code,
-            });
-            reject(err);
-        });
-
-        remoteFileStream.on("end", () => {
-            resolve(fileContent);
+        fs.writeFile(filePath, csvContent, 'utf8', (err) => {
+            if (err) {
+                console.error("Erreur lors de l'enregistrement du fichier CSV :", err);
+                reject(err);
+            } else {
+                console.log(`Fichier CSV enregistré : ${filePath}`);
+                resolve();
+            }
         });
     });
 }
-
 
 // Middleware pour parser le JSON
 app.use(express.json());
@@ -52,16 +66,50 @@ app.get('/', (req: Request, res: Response) => {
     res.sendFile(path.join(__dirname, './html/home.html'));
 });
 
-// Route pour lire un fichier HDFS
-app.get("/read-file", async (req, res) => {
-    const filePath = "data/output/modification-count-by-color/part-00000";
-    try {
-        const fileContent = await readFileFromHDFS(filePath);
-        res.send(`Contenu du fichier : ${fileContent}`);
-    } catch (error) {
-        res.status(500).send("Erreur lors de la lecture du fichier HDFS");
-    }
-});
+
+const createFileReadingRoute = (hdfsPath: string, fileName: string, headers: string[]) => {
+    return async (req: Request, res: Response) => {
+        try {
+            const fileContent = await readFileFromHDFS(hdfsPath);
+            await saveContentAsCSV(fileName, headers, fileContent);
+
+            res.send(`Fichier CSV enregistré : ${fileName}`);
+        } catch (error) {
+            res.status(500).send("Erreur lors de la lecture du fichier HDFS ou de l'enregistrement du fichier CSV");
+        }
+    };
+};
+
+
+app.get("/modification-count-by-color", createFileReadingRoute(
+    "/user/root/data/output/modification-count-by-color/part-00000",
+    "modification-count-by-color.csv",
+    ["Color", "ModificationCount"]
+));
+
+app.get("/modification-count-by-coordinate", createFileReadingRoute(
+    "/user/root/data/output/modification-count-by-coordinate/part-00000",
+    "modification-count-by-coordinate.csv",
+    ["XCoordinate", "YCoordinate", "ModificationCount"]
+));
+
+app.get("/modification-count-by-hours", createFileReadingRoute(
+    "/user/root/data/output/modification-count-by-hours/part-00000",
+    "modification-count-by-hours.csv",
+    ["Hour", "ModificationCount"]
+));
+
+app.get("/modification-count-by-user", createFileReadingRoute(
+    "/user/root/data/output/modification-count-by-user/part-00000",
+    "modification-count-by-user.csv",
+    ["User", "ModificationCount"]
+));
+
+app.get("/most-placed-color-by-coordinate", createFileReadingRoute(
+    "/user/root/data/output/most-placed-color-by-coordinate/part-00000",
+    "most-placed-color-by-coordinate.csv",
+    ["XCoordinate", "YCoordinate", "Color", "PlacementCount"]
+));
 
 // Démarrer le serveur
 app.listen(PORT, () => {
