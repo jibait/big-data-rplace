@@ -7,10 +7,10 @@ const PORT = process.env.PORT || 3000;
 // Middleware pour parser le JSON
 app.use(express.json());
 
-// Servir les fichiers statiques à partir du dossier `public`
+// Servir les fichiers statiques à partir du dossier public
 app.use(express.static(path.join(__dirname, '../public')));
 
-// Définir une route de base
+// Route de base
 app.get('/', (req: Request, res: Response) => {
     res.sendFile(path.join(__dirname, './html/home.html'));
 });
