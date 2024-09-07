@@ -26,6 +26,11 @@ function readFileFromHDFS(filePath: string): Promise<string> {
 
         remoteFileStream.on("error", (err) => {
             console.error("Erreur lors de la lecture du fichier HDFS :", err);
+            console.error("Détails de l'erreur :", {
+                message: err.message,
+                stack: err.stack,
+                code: err.code,
+            });
             reject(err);
         });
 
