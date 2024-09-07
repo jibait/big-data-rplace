@@ -7,6 +7,13 @@ if [ -z "$(jps | grep NameNode)" ]; then
   sh /root/start-hadoop.sh > /dev/null
 fi
 
+# Check if hadoop's safe mode is enabled
+if [ ! -z "$(hdfs dfsadmin -safemode get | grep ON)" ]; then
+  # Disable hadoop's safe mode
+  echo "Disabling Hadoop's safe mode"
+  hdfs dfsadmin -safemode leave
+fi
+
 echo "Creating and cleaning HDFS directories"
 hdfs dfs -mkdir -p .
 hdfs dfs -mkdir -p data
