@@ -54,8 +54,6 @@ services:
       - "3000:3000"
     networks:
       - hadoop
-    volumes:
-      - ./web:/usr/src/app
     depends_on:
       - hadoop-master
       - hadoop-worker1
