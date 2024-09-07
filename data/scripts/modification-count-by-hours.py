@@ -10,6 +10,7 @@ findspark.init()
 # Result is formatted as `hour,count`
 
 sc = SparkContext("local[*]", "modification-count-by-hour")
+sc.setLogLevel("ERROR")
 
 if len(sys.argv) != 3:
     print("Usage: modification-count-by-hour <input-file> <output-file>")
