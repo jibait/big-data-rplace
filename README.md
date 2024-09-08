@@ -2,6 +2,16 @@
 
 Projet BigData ESIEA 2024-2025
 
+Ce projet a été réalisé dans le cadre du cours de Big Data de 3ème année de cycle ingénieur de l'ESIEA.
+
+### Membres du groupe
+
+- Lino MOREAU
+- Jean-Baptiste LELANDAIS
+- Étienne CHEVROLLIER
+- Clément CUVIER
+- Frédéric HILLERITEAU
+
 ## Traitement de données
 
 ### Dataset
@@ -24,6 +34,8 @@ Les lignes du fichier sont formatées de la manière suivante :
 Par défaut, le dataset utilisé est le fichier `data/input/10k.csv` qui contient les 10 000 premières lignes du dataset complet. Pour utiliser le dataset complet, ou tout autre extrait du dataset, il faut :
 - Placer le fichier dans le dossier `data/input` de ce projet
 - Copier le fichier `.env.template` en `.env` et modifier la variable `INPUT_FILE_NAME` pour indiquer le nom du fichier à utiliser
+
+Le dataset complet (21,7GB) est disponible à l'URL [https://www.kaggle.com/datasets/antoinecarpentier/redditrplacecsv](https://www.kaggle.com/datasets/antoinecarpentier/redditrplacecsv).
 
 ### Execution des traitements sur le container Hadoop
 
@@ -54,13 +66,8 @@ Les résultats des traitements se trouveront dans le dossier `/user/root/data/ou
 /user/root/data/output/most-placed-color-by-coordinate.png
 ```
 
+## Visualisation des résultats
 
-### Execution des traitements en local
+Les résultats des traitements sont visualisables dans une interface web, disponible à l'URL [http://localhost:3000](http://localhost:3000) lorsque le docker compose est démarré.
 
-Pour exécuter les traitements en local, il faut exécuter l'un des scripts pythons, présents dans le dossier `hadoop-spark/scripts/` avec 2 arguments, le fichier d'entrée et le dossier de sortie.
-
-Par exemple, pour exécuter le script `modification-count-by-color` :
-
-```bash
-python data/scripts/modification-count-by-color.py data/input/10k.csv data/output/modification-count-by-color
-```
+Les graphiques sont affichés progressivement dans l'interface web au fur et à mesure de l'avancement des traitements.
