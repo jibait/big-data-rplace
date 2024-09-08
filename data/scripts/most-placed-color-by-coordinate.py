@@ -13,7 +13,7 @@ import math
 # Result is formatted as `x,y,color`
 
 sc = SparkContext("local[*]", "most-placed-color-by-coordinate")
-sc.setLogLevel("WARN")
+sc.setLogLevel("ERROR")
 
 if len(sys.argv) != 3:
     print("Usage: most-placed-color-by-coordinate <input-file> <output-file>")
