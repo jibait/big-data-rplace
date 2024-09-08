@@ -88,7 +88,7 @@ app.get("/modification-count-by-color", createFileReadingRoute(
 ));
 
 app.get("/modification-count-by-coordinate", createFileReadingRoute(
-    "/user/root/data/output/modification-count-by-coordinate/part-00000",
+    "/user/root/data/output/modification-count-by-coordinate.png",
     "modification-count-by-coordinate.csv",
     ["XCoordinate", "YCoordinate", "ModificationCount"]
 ));
@@ -106,7 +106,7 @@ app.get("/modification-count-by-user", createFileReadingRoute(
 ));
 
 app.get("/most-placed-color-by-coordinate", createFileReadingRoute(
-    "/user/root/data/output/most-placed-color-by-coordinate/part-00000",
+    "/user/root/data/output/most-placed-color-by-coordinate.png",
     "most-placed-color-by-coordinate.csv",
     ["XCoordinate", "YCoordinate", "Color", "PlacementCount"]
 ));
