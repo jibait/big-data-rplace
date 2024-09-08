@@ -136,12 +136,29 @@
     <section id="graphes" class="graph-container">
         <h1>Graphiques concernant r/place</h1>
         <div id="my_dataviz"></div>
-        <div id="my_dataviz2"></div>
+        <div id="dataVizColor"></div>
         <div class="information-container">
-            <h1 class="information-container-title">Graphique en Barres</h1>
+            <h1 class="information-container-title">Graphique en Barres des couleurs modifiées</h1>
             <p class="information-container-explanation">
                 Le graphique ci-dessus montre la distribution des couleurs utilisées par les utilisateurs de r/place.
                 On voit le nombre de pixels qui ont été placés pour chaque couleur.
+            </p>
+        </div>
+
+        <div id="dataVizUser"></div>
+        <div class="information-container">
+            <h1 class="information-container-title">Graphique en Barres des utilisateurs</h1>
+            <p class="information-container-explanation">
+                Le graphique ci-dessus montre les 10 utilisateurs ayant placé le plus de pixels sur la toile de r/place avec leur identifiant.
+            </p>
+        </div>
+
+        <div id="dataVizHours"></div>
+        <div class="information-container">
+            <h1 class="information-container-title">Graphique en Barres des heures</h1>
+            <p class="information-container-explanation">
+                Le graphique ci-dessus montre le nombre de pixels placés par heure sur la toile de r/place.
+                On voit en légende de l'axe X la date et l'heure de la journée.
             </p>
         </div>
     </section>
@@ -161,7 +178,7 @@
         <div class="footer-stack-container">
             <h3>Technologies</h3>
             <div class="footer-stack-logos">
-                <img class="footer-stack-logo-1x1" src="./img/D3.png" alt="D3.js">
+                <img class="footer-stack-logo-1x1" src="./img/d3.png" alt="D3.js">
                 <img class="footer-stack-logo-rect-XL" src="./img/Hadoop.png" alt="Apache Hadoop">
                 <img class="footer-stack-logo-rect" src="./img/apache_spark.webp" alt="Apache Spark">
             </div>
@@ -170,8 +187,10 @@
 
 
     <!-- JS Scripts -->
-    <script src="./js/graphbar.js"></script>
-    <script src="./js/heatmap.js"></script>
+    <script src="./JS/graphbarColor.js"></script>
+    <script src="./JS/heatmap.js"></script>
+    <script src="./JS/graphbarUser.js"></script>
+    <script src="./JS/graphbarHours.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
