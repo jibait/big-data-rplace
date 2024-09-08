@@ -11,7 +11,7 @@ async function requestRefreshModificationCountByUserUntilSuccess() {
             return;
         }
     } catch(e) {}
-    console.log("Failed to load modification-count-by-user data, retrying in 2 seconds...");
+    console.log("Failed to load modification-count-by-user data, retrying in 5 seconds...");
     setTimeout(requestRefreshModificationCountByUserUntilSuccess, 5000);
 }
 

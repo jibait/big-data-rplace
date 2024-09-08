@@ -140,12 +140,11 @@
             </p>
         </div>
 
-        <div id="dataVizUser"></div>
+        <div id="modificationCountByCoordinate"></div>
         <div class="information-container">
-            <h1 class="information-container-title">Graphique en Barres des utilisateurs</h1>
+            <h1 class="information-container-title">Heatmap des placements de pixels</h1>
             <p class="information-container-explanation">
-                Le graphique ci-dessus montre les 10 utilisateurs ayant placé le plus de pixels sur la toile de r/place
-                avec leur identifiant.
+                Le graphique ci-dessus montre les coordonnées les plus modifiées sur la fresque durant l'événement r/place.
             </p>
         </div>
 
@@ -155,6 +154,22 @@
             <p class="information-container-explanation">
                 Le graphique ci-dessus montre le nombre de pixels placés par heure sur la toile de r/place.
                 On voit en légende de l'axe X la date et l'heure de la journée.
+            </p>
+        </div>
+
+        <div id="dataVizUser"></div>
+        <div class="information-container">
+            <h1 class="information-container-title">Graphique en Barres des utilisateurs</h1>
+            <p class="information-container-explanation">
+                Le graphique ci-dessus montre les 10 utilisateurs ayant placé le plus de pixels sur la toile de r/place avec leur identifiant.
+            </p>
+        </div>
+
+        <div id="mostPlacedColorByCoordinate"></div>
+        <div class="information-container">
+            <h1 class="information-container-title">Carte des couleurs les plus placées pour chaque coordonnées de la fresque</h1>
+            <p class="information-container-explanation">
+                Le graphique ci-dessus montre les couleurs les plus placées pour chaque coordonnées de la fresque durant l'événement r/place.
             </p>
         </div>
     </section>
@@ -184,9 +199,10 @@
 
     <!-- JS Scripts -->
     <script src="./JS/graphbarColor.js"></script>
-    <script src="./JS/heatmap.js"></script>
     <script src="./JS/graphbarUser.js"></script>
     <script src="./JS/graphbarHours.js"></script>
+    <script src="./JS/modificationCountByCoordinate.js"></script>
+    <script src="./JS/mostPlacedColorByCoordinate.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
