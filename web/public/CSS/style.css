@@ -3,8 +3,8 @@ body {
     font-family: 'Raleway', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #e9e9e9;
-    color: #222222;
+    background-color: #222222;
+    color: white;
 }
 
 * {
@@ -295,6 +295,16 @@ body {
     text-align: center;
 }
 
+.what-rplace {
+    background-image: url('../img/reddit-background.jpeg');
+    background-size: 100%;
+    /* Dézoome l'image */
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 40px;
+    text-align: center;
+}
+
 .information-container {
     max-width: 800px;
     margin: 0 auto;
@@ -333,6 +343,43 @@ body {
     /* Commence le positionnement à partir de la gauche */
 }
 
+.image-container {
+    position: relative;
+    /* Conteneur parent pour le positionnement absolu */
+    width: 100%;
+    /* Ajuste selon tes besoins */
+    height: 300px;
+    /* Ajuste selon tes besoins */
+}
+
+.image-title {
+    font-size: 32px;
+    color: white;
+    margin: 20px;
+    /* Espace autour de la carte */
+    padding: 20px;
+    /* Espace à l'intérieur de la carte */
+    position: absolute;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Fond semi-transparent */
+    border-radius: 8px;
+    /* Coins arrondis pour la carte */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    /* Ombre portée pour la carte */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+    /* Ombre du texte */
+    text-align: center;
+    /* Centre le texte */
+    width: 50%;
+    /* Ajuste la largeur pour les marges */
+    top: 20px;
+    /* Ajuste la position verticale du texte */
+    left: 50%;
+    /* Centre horizontalement */
+    transform: translateX(-50%);
+    /* Ajuste la position horizontale pour le centrer */
+}
 
 
 .information-container-explanation {
@@ -401,22 +448,23 @@ body {
     margin-bottom: 20px;
 }
 
-/* Engagement Section styles */
-.engagement {
+/* chronologie Section styles */
+.chronologie {
     background-color: #222222;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    padding: 40px;
 }
 
-.engagement-timeline {
+.chronologie-timeline {
     width: 80%;
     margin: 0 auto;
 }
 
-.engagement-container-title,
+.chronologie-container-title,
 .information-container-title {
     color: white;
     font-size: 32px;
@@ -428,6 +476,7 @@ body {
     position: relative;
     padding: 20px 0;
     list-style: none;
+    height: min-content;
 }
 
 .timeline-item {
