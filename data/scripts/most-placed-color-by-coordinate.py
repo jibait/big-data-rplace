@@ -3,6 +3,11 @@ import shutil
 from pyspark import SparkContext
 import findspark
 findspark.init()
+from PIL import Image, ImageDraw
+import time
+import os
+import subprocess
+import math
 
 # Script which counts the most placed color by coordinate
 # Result is formatted as `x,y,color`
@@ -44,8 +49,33 @@ def color_count_by_coordinates_from_coordinates_and_color_count(x):
     return (key_values[0] + "," + key_values[1], (key_values[2], x[1]))
 
 color_count_by_coordinates = coordinates_and_color_count.map(lambda x: color_count_by_coordinates_from_coordinates_and_color_count(x))
-
 most_placed_color_by_coordinates = color_count_by_coordinates.reduceByKey(lambda a, b: a if a[1] > b[1] else b)
-
 formated_result = most_placed_color_by_coordinates.map(lambda x: x[0] + "," + str(x[1][0]))
-formated_result.coalesce(1).saveAsTextFile(output_file)
+collected_formated_result = formated_result.coalesce(1).collect()
+
+# Image creation
+image = Image.new("RGB", (2000, 2000), "white")
+draw = ImageDraw.Draw(image)
+
+# Draw the pixels
+for coordinates in collected_formated_result:
+    x, y, color = coordinates.split(",")
+    draw.point((int(x), int(y)), fill=color)
+
+# Save the image locally
+local_image_path = "/tmp/most-placed-color-by-coordinate-" + str(int(time.time() * 1000))  + ".png"
+print("Saving the image to " + local_image_path)
+image.save(local_image_path, "PNG")
+
+# HDFS path where the image will be saved
+hdfs_image_path = output_file + ".png"
+
+# Command to copy the image to HDFS
+hdfs_command = f"hdfs dfs -put {local_image_path} {hdfs_image_path}"
+
+# Execute the command
+try:
+    subprocess.run(hdfs_command, check=True, shell=True)
+    print(f"Image successfully saved to HDFS at {hdfs_image_path}")
+except subprocess.CalledProcessError as e:
+    print(f"Failed to save image to HDFS: {e}")

@@ -1,6 +1,20 @@
 document.addEventListener('DOMContentLoaded', function() {
-    loadgraphBar();
+    requestRefreshModificationCountByColorUntilSuccess();
 });
+
+async function requestRefreshModificationCountByColorUntilSuccess() {
+    try {
+        const result = await fetch('/modification-count-by-color');
+        console.log(result);
+        if (result.ok) {
+            console.log("✅ modification-count-by-color loaded successfully, loading graph...");
+            loadgraphBar();
+            return;
+        }
+    } catch(e) {}
+    console.log("Failed to load modification-count-by-color data, retrying in 2 seconds...");
+    setTimeout(requestRefreshModificationCountByColorUntilSuccess, 5000);
+}
 
 /**
  * Fonction permettant de charger le graphique en barres
@@ -12,8 +26,8 @@ function loadgraphBar(){
         width = 750 - margin.left - margin.right,
         height = 650 - margin.top - margin.bottom;
 
-    // Attacher le svg à la div #my_dataviz2
-    var svg = d3.select("#my_dataviz2")
+    // Attacher le svg à la div 
+    var svg = d3.select("#dataVizColor")
     .append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
@@ -27,7 +41,7 @@ function loadgraphBar(){
     var colorHexMap = new Map(colorData.map(c => [c.hex, c.name])); // Map des couleurs hexadécimales vers les noms
 
     // Parsing des données
-    d3.csv("../datasets/modifications_by_color.csv", function(data) {
+    d3.csv("../datasets/modification-count-by-color.csv", function(data) {
 
         // Axe x
         var x = d3.scaleBand()
@@ -42,8 +56,8 @@ function loadgraphBar(){
                 .attr("transform", "translate(-10,0)rotate(-45)")
                 .style("text-anchor", "end");
 
-        var minValue = d3.min(data, function(d) { return +d.Value; });
-        var maxValue = d3.max(data, function(d) { return +d.Value; });
+        var minValue = d3.min(data, function(d) { return +d.ModificationCount; });
+        var maxValue = d3.max(data, function(d) { return +d.ModificationCount; });
 
         // Axe y logarithmique
         var y = d3.scaleLog()
@@ -68,22 +82,22 @@ function loadgraphBar(){
 
         // Ajouter les barres
         bars.append("rect")
-            .attr("x", function(d) { return x(colorHexMap.get(d.Country)); })
-            .attr("y", function(d) { return y(d.Value); })
+            .attr("x", function(d) { return x(colorHexMap.get(d.Color)); })
+            .attr("y", function(d) { return y(d.ModificationCount); })
             .attr("width", x.bandwidth())
-            .attr("height", function(d) { return height - y(d.Value); })
+            .attr("height", function(d) { return height - y(d.ModificationCount); })
             .attr("fill", function(d) { 
-                return d.Country;
+                return d.Color;
             });
 
         // Ajouter le texte pour afficher la valeur
         bars.append("text")
             .attr("class", "bar-label")
-            .attr("x", function(d) { return x(colorHexMap.get(d.Country)) + x.bandwidth() / 2; })
-            .attr("y", function(d) { return y(d.Value) - 5; })
+            .attr("x", function(d) { return x(colorHexMap.get(d.Color)) + x.bandwidth() / 2; })
+            .attr("y", function(d) { return y(d.ModificationCount) - 5; })
             .attr("text-anchor", "middle")
             .style("opacity", 0)  // Masquer le texte par défaut
-            .text(function(d) { return d.Value; });
+            .text(function(d) { return d.ModificationCount; });
 
         // Gestion des événements de survol
         bars.on("mouseover", function() {
