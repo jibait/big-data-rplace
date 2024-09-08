@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rgraph - Projet r/place</title>
     <link rel="stylesheet" type="text/css" href="./CSS/style.css">
+    <link rel="icon" type="image/png" href="./img/logo.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -14,94 +15,90 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
-
 <body>
     <!-- Header -->
     <header class="app-header">
         <div class="app-header-left">
-            <img src="./img/logo.png" alt="Logo" class="app-header-logo">
+            <a href="#r-home">
+                <img src="./img/logo.png" alt="Logo" class="app-header-logo">
+            </a>
         </div>
         <nav class="app-header-nav">
             <a href="#r-place" class="active">Qu'est-ce que r/place ?</a>
+            <a href="#chronologie">Chronologie</a>
             <a href="#r-graph">Le projet r/graph</a>
             <a href="#graphes">Les graphes</a>
         </nav>
     </header>
 
     <!-- Section: Landing Page -->
-    <section class="landing-page">
+    <section class="landing-page" id="r-home">
         <div class="landing-page-content">
-            <h1>Bienvenue sur Rgraph</h1>
-            <p>Découvrez comment la communauté Reddit a créé des œuvres d'art collaboratives uniques à travers des
-                pixels et explorez nos graphiques interactifs basés sur le projet r/place.</p>
-            <a href="#r-place" class="landing-page-btn">En savoir plus</a>
+            <div class="landing-page-text">
+                <h1>Bienvenue sur le projet r/graph</h1>
+                <p>Découvrez comment la communauté Reddit a créé des œuvres d'art collaboratives uniques à travers des
+                    pixels et explorez nos graphiques basés sur l'évènement r/place.</p>
+                <a href="#r-place" class="landing-page-btn">En savoir plus</a>
+            </div>
             <div class="scroll-down">
                 <i class="fas fa-chevron-down"></i>
             </div>
         </div>
     </section>
 
-    <section class="information">
+    <section class="what-rplace" id="r-place">
         <div class="information-container">
-            <h1 class="information-container-title" id="r-place">Qu'est-ce que r/place ?</h1>
+            <h1 class="information-container-title">Qu'est-ce que r/place ?</h1>
             <p class="information-container-explanation">
-                r/place était un projet collaboratif récurrent et une expérience sociale hébergée sur le site
-                d'agrégation de contenu Reddit, en avril 2017. Les utilisateurs de Reddit pouvaient modifier les pixels
-                d'une toile virtuelle en temps réel en choisissant une couleur parmi une palette de 16 couleurs. Chaque
-                utilisateur pouvait placer un pixel toutes les cinq minutes, collaborant ainsi à la création d'images
-                et motifs sur la toile.
+                r/place est un projet collaboratif et une expérience sociale récurrente, organisée sur Reddit. La
+                dernière édition a eu lieu en juillet 2023.
+                Les utilisateurs de Reddit peuvent modifier les pixels d'une immense toile virtuelle en temps réel, en
+                choisissant une couleur parmi une palette de 32 couleurs.
+                Chaque utilisateur peut placer un pixel toutes les cinq minutes, favorisant ainsi une collaboration
+                mondiale pour créer des images et motifs divers.
+            </p>
+            <p class="information-container-explanation">
+                L'édition 2023 a été marquée par des millions de participants et des milliards de pixels placés,
+                générant des créations artistiques uniques et reflétant les diverses communautés présentes sur Reddit.
             </p>
             <a class="information-container-btn" href="https://www.reddit.com/r/place/" target="_blank">
                 <i class="fab fa-reddit"></i> Lien vers la r/place
             </a>
         </div>
     </section>
-    <!-- Section: Engagement et Impact -->
-    <section class="engagement">
-        <div class="engagement-container">
-            <h1 class="engagement-container-title" id="engagement">Engagement et Impact</h1>
+    <!-- Section: Chronologie -->
+    <section class="chronologie" id="chronologie">
+        <div class="chronologie-container">
+            <h1 class="chronologie-container-title">Chronologie</h1>
             <div class="timeline">
                 <div class="timeline-item container left">
                     <div class="content">
-                        <h2>1er avril 2017</h2>
-                        <p>Lancement de r/place avec une toile vide.</p>
+                        <h2>20 juillet 2023</h2>
+                        <p>Début de l'édition 2023 de r/place avec une toile vierge, prête pour les créations des
+                            utilisateurs.</p>
                     </div>
                 </div>
                 <div class="timeline-item container right">
                     <div class="content">
-                        <h2>2 avril 2017</h2>
-                        <p>Les premières œuvres d'art commencent à apparaître.</p>
+                        <h2>22 juillet 2023</h2>
+                        <p>Les premiers grands projets communautaires émergent, transformant la toile en un espace
+                            d'expression artistique global.</p>
                     </div>
                 </div>
                 <div class="timeline-item container left">
                     <div class="content">
-                        <h2>3 avril 2017</h2>
-                        <p>Clôture de l'événement avec une toile complètement remplie.</p>
+                        <h2>25 juillet 2023</h2>
+                        <p>Clôture de l'événement avec une toile multicolore remplie de créations issues de diverses
+                            communautés Reddit.</p>
                     </div>
                 </div>
             </div>
-            <div class="engagement-details">
-                <h2>Engagement des Utilisateurs</h2>
-                <p>
-                    Le projet a attiré plus de 1 million de participants, démontrant la capacité de la communauté
-                    Reddit à collaborer sur un projet commun. Les utilisateurs ont placé des millions de pixels, créant
-                    une
-                    mosaïque dynamique et évolutive.
-                </p>
-                <p>
-                    L'impact de r/place a été largement reconnu comme un exemple de collaboration en ligne réussie
-                    et de culture internet.
-                </p>
-            </div>
         </div>
     </section>
-
-
-
     <!-- Section: Projet r/graph -->
-    <section class="information">
+    <section class="information" id="r-graph">
         <div class="information-container">
-            <h1 class="information-container-title" id="r-graph">Le projet r/graph</h1>
+            <h1 class="information-container-title">Le projet r/graph</h1>
             <div class="information-content">
                 <div class="information-text">
                     <p>
@@ -119,9 +116,6 @@
                         sur la toile, permettant une exploration approfondie de l'événement r/place.
                     </p>
                 </div>
-                <div class="information-image">
-                    <img src="./img/project_overview.png" alt="Vue d'ensemble du projet">
-                </div>
             </div>
         </div>
     </section>
@@ -129,6 +123,7 @@
 
     <!-- Section: Image -->
     <div class="image-container">
+        <h1 class="image-title">Aperçu de la toile finale du r/place</h1>
         <img src="./img/rplace.png" alt="rplace" class="animated-image">
     </div>
 
@@ -149,7 +144,8 @@
         <div class="information-container">
             <h1 class="information-container-title">Graphique en Barres des utilisateurs</h1>
             <p class="information-container-explanation">
-                Le graphique ci-dessus montre les 10 utilisateurs ayant placé le plus de pixels sur la toile de r/place avec leur identifiant.
+                Le graphique ci-dessus montre les 10 utilisateurs ayant placé le plus de pixels sur la toile de r/place
+                avec leur identifiant.
             </p>
         </div>
 
@@ -204,6 +200,29 @@
             yoyo: true, // Inverser la direction à chaque répétition
             ease: "slow" // Mouvement linéaire
         });
+        gsap.from(".information-container, .landing-page-text", {
+            duration: 1,
+            opacity: 0,
+            y: 20, // Descend légèrement le container
+            ease: "power2.out"
+        });
+
+    </script>
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                const offset = 70; // Hauteur de la navbar à compenser
+                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/ScrollTrigger.min.js"></script>
     <script>
