@@ -11,7 +11,7 @@ async function requestRefreshModificationCountByHoursUntilSuccess() {
             return;
         }
     } catch(e) {}
-    console.log("Failed to load modification-count-by-hours data, retrying in 2 seconds...");
+    console.log("Failed to load modification-count-by-hours data, retrying in 5 seconds...");
     setTimeout(requestRefreshModificationCountByHoursUntilSuccess, 5000);
 }
 

@@ -608,3 +608,7 @@ html {
         flex-direction: column;
     }
 }
+
+.data-image {
+    max-width: 800px;
+}
