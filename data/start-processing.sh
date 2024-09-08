@@ -28,15 +28,19 @@ if [ ! -f /root/input/$INPUT_FILE_NAME ]; then
   exit 1
 fi
 
-# Copy the input files to HDFS
-echo "Copying input file /root/input/$INPUT_FILE_NAME to HDFS"
-hdfs dfs -put -f /root/input/$INPUT_FILE_NAME data/input
+# Check if the input file has already been copied to HDFS
+if [ ! -z "$(hdfs dfs -ls data/input | grep $INPUT_FILE_NAME)" ]; then
+  echo "Input file /root/input/$INPUT_FILE_NAME has already been copied to HDFS"
+else
+  echo "Copying input file /root/input/$INPUT_FILE_NAME to HDFS"
+  hdfs dfs -put -f /root/input/$INPUT_FILE_NAME data/input
+fi
 
 echo "Starting job execution"
 # For each files in /root/scripts
 for f in /root/scripts/*; do
   # Execute the file
+  echo "---"
   echo "Executing $f"
-#   spark-submit $f data/input/10k.csv data/output/$(basename $f | cut -d. -f1)
   python3 $f data/input/$INPUT_FILE_NAME data/output/$(basename $f | cut -d. -f1)
 done
