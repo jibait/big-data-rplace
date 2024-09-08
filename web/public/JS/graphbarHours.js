@@ -1,6 +1,19 @@
 document.addEventListener('DOMContentLoaded', function() {
-    loadgraphBarHours();
+    requestRefreshModificationCountByHoursUntilSuccess();
 });
+
+async function requestRefreshModificationCountByHoursUntilSuccess() {
+    try {
+        const result = await fetch('/modification-count-by-hours');
+        if (result.ok) {
+            console.log("✅ modification-count-by-hours loaded successfully, loading graph...");
+            loadgraphBarHours();
+            return;
+        }
+    } catch(e) {}
+    console.log("Failed to load modification-count-by-hours data, retrying in 2 seconds...");
+    setTimeout(requestRefreshModificationCountByHoursUntilSuccess, 5000);
+}
 
 /**
  * Fonction permettant de charger le graphique en barres

@@ -1,6 +1,20 @@
 document.addEventListener('DOMContentLoaded', function() {
-    loadgraphBar();
+    requestRefreshModificationCountByColorUntilSuccess();
 });
+
+async function requestRefreshModificationCountByColorUntilSuccess() {
+    try {
+        const result = await fetch('/modification-count-by-color');
+        console.log(result);
+        if (result.ok) {
+            console.log("✅ modification-count-by-color loaded successfully, loading graph...");
+            loadgraphBar();
+            return;
+        }
+    } catch(e) {}
+    console.log("Failed to load modification-count-by-color data, retrying in 2 seconds...");
+    setTimeout(requestRefreshModificationCountByColorUntilSuccess, 5000);
+}
 
 /**
  * Fonction permettant de charger le graphique en barres

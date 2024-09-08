@@ -1,6 +1,19 @@
 document.addEventListener('DOMContentLoaded', function() {
-    loadgraphBarUser();
+    requestRefreshModificationCountByUserUntilSuccess();
 });
+
+async function requestRefreshModificationCountByUserUntilSuccess() {
+    try {
+        const result = await fetch('/modification-count-by-user');
+        if (result.ok) {
+            console.log("✅ modification-count-by-user loaded successfully, loading graph...");
+            loadgraphBarUser();
+            return;
+        }
+    } catch(e) {}
+    console.log("Failed to load modification-count-by-user data, retrying in 2 seconds...");
+    setTimeout(requestRefreshModificationCountByUserUntilSuccess, 5000);
+}
 
 /**
  * Fonction permettant de charger le graphique en barres
